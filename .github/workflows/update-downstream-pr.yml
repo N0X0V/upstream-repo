@@ -9,9 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          github.rest.issues.updateComment({
-            context.repo.owner,
-            N0X0V/downstream-repo,
-            1691226450,
-            "The other PR has been merged",
-            });
+          github.rest.issues.updateComment({context.repo.owner,N0X0V/downstream-repo,1691226450,"The other PR has been merged"});
