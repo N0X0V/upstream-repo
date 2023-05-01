@@ -13,7 +13,7 @@ jobs:
           script: |
             github.rest.issues.updateComment({
               owner: context.repo.owner,
-              repo: N0X0V/downstream-repo,
+              repo: "github.com/N0X0V/downstream-repo",
               comment_id: 1691226450,
               body: "The other PR has been merged",
             });
