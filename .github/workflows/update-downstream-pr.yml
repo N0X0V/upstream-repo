@@ -13,9 +13,5 @@ jobs:
             context.repo.owner,
             N0X0V/downstream-repo,
             1691226450,
-            "Tasks before merging:
-            - [x] https://github.com/N0X0V/upstream-repo/pull/2 is merged
-
-            The other PR has been merged
-            ",
+            "The other PR has been merged",
             });
