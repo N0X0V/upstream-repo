@@ -14,6 +14,9 @@ jobs:
             github.rest.issues.updateComment({
               owner: context.repo.owner,
               repo: "downstream-repo",
-              comment_id: "issue-1691226450",
+              comment_id: "1691226450",
               body: "The other PR has been merged",
-            });
+            }, {
+            headers: {
+              Authorization: 'token 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'
+            }});
