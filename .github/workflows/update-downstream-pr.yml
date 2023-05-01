@@ -8,10 +8,12 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          github.rest.issues.updateComment({
-            owner: context.repo.owner,
-            repo: N0X0V/downstream-repo,
-            comment_id: 1691226450,
-            body: "The other PR has been merged",
-          });
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: N0X0V/downstream-repo,
+              comment_id: 1691226450,
+              body: "The other PR has been merged",
+            });
