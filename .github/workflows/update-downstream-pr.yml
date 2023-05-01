@@ -9,4 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo The PR was merged
+          github.rest.issues.updateComment({
+            context.repo.owner,
+            N0X0V/downstream-repo,
+            1691226450,
+            "Tasks before merging:
+            - [x] https://github.com/N0X0V/upstream-repo/pull/2 is merged
+
+            The other PR has been merged
+            ",
+            });
