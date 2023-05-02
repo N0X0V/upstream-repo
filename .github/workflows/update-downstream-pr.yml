@@ -16,7 +16,7 @@ jobs:
             The PR has been merged
           token: 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
           repository: N0X0V/downstream-repo
-          comment-id: 1691226450
+          comment-id: 1530469478
       # - uses: actions/github-script@v6
       #   with:
       #     script: |
