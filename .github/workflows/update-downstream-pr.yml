@@ -11,6 +11,15 @@ jobs:
       - name: get comment
         run: |
           curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.API_TOKEN}}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/N0X0V/downstream-repo/issues/comments/1530469478 | jq .body | sed 's/[ ] https:\/\/github.com\/N0X0V\/upstream-repo\/pull\/2 /[x] https:\/\/github.com\/N0X0V\/upstream-repo\/pull\/2/' > body.txt
-      - name: update comment
-        run: |
-          curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.API_TOKEN}}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/N0X0V/downstream-repo/issues/comments/1530469478 -d '{"body":'$(cat body.txt)'}'
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: 1530469478
+              body: '👋 Thanks for reporting!'
+            })
+      # - name: update comment
+      #   run: |
+      #     curl -L -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.API_TOKEN}}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/N0X0V/downstream-repo/issues/comments/1530469478 -d '{"body":'$(cat body.txt)'}'
