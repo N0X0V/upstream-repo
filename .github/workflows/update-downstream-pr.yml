@@ -8,24 +8,12 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Create or Update Comment
-        uses: peter-evans/create-or-update-comment@v3.0.0
-        with:
-          issue-number: 1
-          body: |
-            The PR has been merged
-          token: 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
-          repository: N0X0V/downstream-repo
-          comment-id: 1530469478
-      # - uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       github.rest.issues.updateComment({
-      #         owner: context.repo.owner,
-      #         repo: "downstream-repo",
-      #         comment_id: "1691226450",
-      #         body: "The other PR has been merged",
-      #       }, {
-      #       headers: {
-      #         Authorization: 'token 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'
-      #       }});
+      - name: update comment
+        run: |
+          curl -L \
+          -X PATCH \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{secrets.GITHUB_TOKEN}}"\
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          https://api.github.com/repos/N0X0V/downstream-repo/issues/comments/1530469478 \
+          -d '{"body":"The upstream PR has been merged"}'
